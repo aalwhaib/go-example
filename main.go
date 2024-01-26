@@ -4,6 +4,8 @@ import (
 	"example/user/hello/business"
 	"fmt"
 	"slices"
+
+	"golang.org/x/exp/maps"
 )
 
 func main() {
@@ -43,4 +45,17 @@ func main() {
 	business.SortByCost(ss)
 	fmt.Printf("index: %d\n", slices.Index(ss, solar2k))
 	business.SortByCost(ss)
+
+	// Maps from contracts
+
+	contracts := make(map[int]business.Solar)
+
+	contracts[1] = solar2k
+	contracts[2] = solar2k
+	contracts[3] = solar2k
+	contracts[4] = solar2k
+
+	contractsIDs := maps.Keys(contracts)
+
+	fmt.Println(contractsIDs)
 }
