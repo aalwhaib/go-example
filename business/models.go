@@ -33,13 +33,13 @@ func (w *Wind) Print() string {
 
 // PrintGeneric returns any type as string.
 // The string is enriched with the required Kineteco legal information.
-func PrintGeneric[T any](t T) string {
+func PrintGeneric[T Energy](t T) string {
 	return fmt.Sprintf("%s - %v\n", kinetecoPrint, t)
 }
 
 // PrintSlice prints a slice of any type to the standard output.
 // Each item is enriched with its position and the Kineteco specific string.
-func PrintSlice[T any](tt []T) {
+func PrintSlice[T Energy](tt []T) {
 	for i, t := range tt {
 		fmt.Printf("%d: %s\n", i, PrintGeneric[T](t))
 	}
