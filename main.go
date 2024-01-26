@@ -27,8 +27,13 @@ func main() {
 	business.PrintSlice[business.Solar](ss)
 	business.PrintSlice[business.Wind]([]business.Wind{windwest, windwest})
 
-	business.Cost(10, solar2k.Netto)
-	business.Cost(0.46, 10)
-	business.Cost(0.46, float64(10))
-	business.Cost[float64](0.46, 10)
+	// business.Cost(10, solar2k.Netto)
+	// business.Cost(0.46, 10)
+	// business.Cost(0.46, float64(10))
+	// business.Cost[float64](0.46, 10)
+
+	// Print functions for 03_02
+	ss2 := business.SolarSlice{solar2k, solar3k}
+	business.PrintSlice(ss2)
+	business.PrintSlice2(ss2)
 }

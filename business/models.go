@@ -8,6 +8,9 @@ type Solar struct {
 	Netto float64
 }
 
+// SolarSlice is a defined slice of Solar.
+type SolarSlice []Solar
+
 // Wind handles all the different energy offers powered by wind.
 type Wind struct {
 	Name  string
@@ -40,6 +43,16 @@ func PrintGeneric[T Energy](t T) string {
 // PrintSlice prints a slice of any type to the standard output.
 // Each item is enriched with its position and the Kineteco specific string.
 func PrintSlice[T Energy](tt []T) {
+	// fmt.Printf("type of tt: %T\n", tt)
+	for i, t := range tt {
+		fmt.Printf("%d: %s\n", i, PrintGeneric[T](t))
+	}
+}
+
+// PrintSlice prints a slice of any type to the standard output.
+// Each item is enriched with its position and the Kineteco specific string.
+func PrintSlice2[T Energy, S ~[]T](tt S) {
+	fmt.Printf("type of tt: %T\n", tt)
 	for i, t := range tt {
 		fmt.Printf("%d: %s\n", i, PrintGeneric[T](t))
 	}
