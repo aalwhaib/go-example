@@ -3,6 +3,7 @@ package main
 import (
 	"example/user/hello/business"
 	"fmt"
+	"slices"
 )
 
 func main() {
@@ -33,7 +34,13 @@ func main() {
 	// business.Cost[float64](0.46, 10)
 
 	// Print functions for 03_02
-	ss2 := business.SolarSlice{solar2k, solar3k}
+	ss2 := business.SolarSlice{solar3k, solar2k}
 	business.PrintSlice(ss2)
 	business.PrintSlice2(ss2)
+
+	// Print functions for 04_02
+	fmt.Printf("index: %d\n", slices.Index(ss, solar2k))
+	business.SortByCost(ss)
+	fmt.Printf("index: %d\n", slices.Index(ss, solar2k))
+	business.SortByCost(ss)
 }

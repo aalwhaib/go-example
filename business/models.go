@@ -1,6 +1,9 @@
 package business
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+)
 
 // Solar handles all the different energy offers powered by solar.
 type Solar struct {
@@ -56,6 +59,20 @@ func PrintSlice2[T Energy, S ~[]T](tt S) {
 	for i, t := range tt {
 		fmt.Printf("%d: %s\n", i, PrintGeneric[T](t))
 	}
+}
+
+func SortByCost[T Energy](a []T) {
+	slices.SortFunc(a, func(a T, b T) int {
+		if a.Cost() == b.Cost() {
+			return 0
+		} else if a.Cost() < b.Cost() {
+			return -1
+		} else {
+			return 1
+		}
+
+		//|| math.IsNaN(a.Cost()) && !math.IsNaN(b.Cost())
+	})
 }
 
 var kinetecoPrint string = "Kineteco Deal:"
